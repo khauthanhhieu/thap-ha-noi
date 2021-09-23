@@ -1,0 +1,6 @@
+.board {
+    display: flex;
+    justify-content: space-around;
+    margin: 10vmin auto 0;
+    width: 90vmin;
+}
