@@ -1,5 +1,5 @@
 import Tower from "./Shape/Tower"
-import { useState } from "react"
+import { useState, useEffect, forwardRef, useImperativeHandle } from "react"
 
 const TOWERS = ['A', 'B', 'C']
 
@@ -11,12 +11,22 @@ function createInitState(nDisk) {
   }
 }
 
-export default function Board(props) {
+function Board(props, ref) {
   const [ state, setState ] = useState(createInitState(props.nDisk))
   const [ selectedDisk, selectDisk ] = useState()
   const [ selectedTower, selectTower ] = useState()
-  const [ step, setStep ] = useState(0)
   const [ history, setHistory ] = useState([])
+
+  const restart = () => {
+    setState(createInitState(props.nDisk))
+    selectDisk(undefined)
+    selectTower(undefined)
+    setHistory([])
+  }
+
+  useImperativeHandle(ref, () => ({ restart }))
+
+  useEffect(restart, [props.nDisk])
 
   const handleSelectTower = function(tower) {
 
@@ -53,7 +63,7 @@ export default function Board(props) {
           ...history,
           [ selectedTower, toTower ]
         ]))
-        setStep(step => step + 1)
+        props.setStep(step => step + 1)
       }
     }
   }
@@ -81,15 +91,8 @@ export default function Board(props) {
         }
         <div className="board__towers__bottom" />
       </div>
-      <div className="board__status">
-        <div>Số bước: { step }</div>
-        <div>Lịch sử</div>
-        <ol>
-          { history.map((ele, index) => (
-            <li key={index}> {ele[0]} - {ele[1]} </li>
-          )) }
-        </ol>
-      </div>
     </div>
   )
 }
+
+export default forwardRef(Board)

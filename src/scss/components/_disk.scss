@@ -1,5 +1,6 @@
 .disk {
     height: calc(4 * var(--unit));
+    max-width: 100%;
     line-height: calc(4 * var(--unit));
     border-radius: var(--unit);
     color: white;

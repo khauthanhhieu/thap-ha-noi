@@ -1,13 +1,10 @@
-import Board from "./components/Board";
+import Game from "./components/Game";
 import "./scss/style.scss"
 
-function App() {
-  const nDisk = 6
+export default function App() {
   return (
     <div className="App">
-      <Board nDisk={nDisk} />
+      <Game />
     </div>
   );
 }
-
-export default App;

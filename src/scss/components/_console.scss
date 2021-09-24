@@ -1,0 +1,15 @@
+.console {
+    display: flex;
+    justify-content: space-between;
+    margin: calc(5 * var(--unit));
+
+    &__item {
+        border: 1px solid blue;
+        padding: var(--unit);
+        border-radius: var(--unit);
+    }
+
+    &__button {
+        border-radius: var(--unit);
+    }
+}
