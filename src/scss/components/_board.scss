@@ -1,0 +1,17 @@
+.board__towers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10vmin auto 0;
+    width: 85%;
+
+    &__bottom {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        border-radius: 1vmin;
+        width: 100%;
+        height: 7.5vmin;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.3), transparent), linear-gradient(#b27315, #966f33 13%, #faddb0 14.5%, #faddb0 27.5%, #966f33 29%, #966f33 42%, #faddb0 43.5%, #d7b889 56.5%, #966f33 58%, #966f33 71%, #d7b889 72.5%, #d7b889 85.5%, #966f33 87%, #b27315);
+    }
+}

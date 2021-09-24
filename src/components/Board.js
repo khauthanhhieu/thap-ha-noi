@@ -1,5 +1,4 @@
 import Tower from "./Shape/Tower"
-import './Board.css'
 import { useState } from "react"
 
 const TOWERS = ['A', 'B', 'C']

@@ -1,4 +1,5 @@
 import Board from "./components/Board";
+import "./scss/style.scss"
 
 function App() {
   const nDisk = 6

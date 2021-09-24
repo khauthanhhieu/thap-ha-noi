@@ -1,5 +1,4 @@
 import Disk from "./Disk"
-import './Tower.css'
 
 export default function Tower(props) {
   return (
