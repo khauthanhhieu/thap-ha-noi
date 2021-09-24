@@ -1,19 +1,36 @@
 .tower {
-    width: 20vh;
+    width: 33%;
+    position: relative;
+    cursor: pointer;
+}
+
+.tower__temp-disk {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(-6 * var(--unit));
+    animation: float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-.5vh);
+    }
 }
 
 .tower__container {
-    height: 40vh;
+    height: calc(40 * var(--unit));
     position: relative;
 }
 
 .tower__container-rod {
     position: absolute;
-    width: 4vh;
+    width: calc(var(--unit) * 4);
     height: 100%;
     margin: auto;
-    left: 8vh;
+    left: calc(50% - calc(var(--unit) * 2));
     background: linear-gradient(to right, #d7b889, #b27315, #966f33);
+    border-radius: var(--unit) var(--unit) 0 0
 }
 
 .tower__container-stack {
