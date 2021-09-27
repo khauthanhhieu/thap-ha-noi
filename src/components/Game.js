@@ -1,6 +1,7 @@
 import { useState, useRef } from "react"
 import Board from "./Board"
 import Console from "./Console"
+import Rule from "./Rules"
 
 export default function Game(props) {
   const [ numberDisk, setNumberDisk ] = useState(5)
@@ -18,7 +19,14 @@ export default function Game(props) {
   return (
     <div className="game">
       <Console nDisk={numberDisk} setNumberDisk={setNumberDisk} restartGame={restart} step={step} />
-      <Board ref={boardRef} nDisk={numberDisk} step={step} setStep={setStep} />
+      <div className="container">
+        <div className="col-6">
+          <Board ref={boardRef} nDisk={numberDisk} step={step} setStep={setStep} />
+        </div>
+        <div className="col-6">
+          <Rule />
+        </div>
+      </div>
     </div>
   )
 }

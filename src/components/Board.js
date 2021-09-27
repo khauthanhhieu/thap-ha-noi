@@ -15,13 +15,11 @@ function Board(props, ref) {
   const [ state, setState ] = useState(createInitState(props.nDisk))
   const [ selectedDisk, selectDisk ] = useState()
   const [ selectedTower, selectTower ] = useState()
-  const [ history, setHistory ] = useState([])
 
   const restart = () => {
     setState(createInitState(props.nDisk))
     selectDisk(undefined)
     selectTower(undefined)
-    setHistory([])
   }
 
   useImperativeHandle(ref, () => ({ restart }))
@@ -59,10 +57,6 @@ function Board(props, ref) {
       selectDisk(undefined)
       selectTower(undefined)
       if (toTower !== selectedTower) {
-        setHistory(history => ([
-          ...history,
-          [ selectedTower, toTower ]
-        ]))
         props.setStep(step => step + 1)
       }
     }
