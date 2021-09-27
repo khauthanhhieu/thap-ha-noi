@@ -19,3 +19,11 @@ export function decreaseDisk() {
 export function increaseStep() {
   return { type: types.INCREASE_STEP }
 }
+
+export function selectTower(tower) {
+  return { type: types.SELECT_TOWER, payload: tower }
+}
+
+export function moveDiskTo(to) {
+  return { type: types.MOVE_DISK_TO, payload: to }
+}
