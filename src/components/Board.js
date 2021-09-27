@@ -1,5 +1,7 @@
 import Tower from "./Shape/Tower"
-import { useState, useEffect, forwardRef, useImperativeHandle } from "react"
+import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import actions from "../actions"
 
 const TOWERS = ['A', 'B', 'C']
 
@@ -11,23 +13,24 @@ function createInitState(nDisk) {
   }
 }
 
-function Board(props, ref) {
-  const [ state, setState ] = useState(createInitState(props.nDisk))
+export default function Board() {
+  const nDisk = useSelector(state => state.game.numberDisk)
+
+  const [ state, setState ] = useState(createInitState(nDisk))
   const [ selectedDisk, selectDisk ] = useState()
   const [ selectedTower, selectTower ] = useState()
 
-  const restart = () => {
-    setState(createInitState(props.nDisk))
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    setState(createInitState(nDisk))
     selectDisk(undefined)
     selectTower(undefined)
-  }
 
-  useImperativeHandle(ref, () => ({ restart }))
-
-  useEffect(restart, [props.nDisk])
+    dispatch(actions.restartGame())
+  }, [nDisk, dispatch])
 
   const handleSelectTower = function(tower) {
-
     setState(prevState => {
       const _selectedTower = [ ...prevState[tower] ]
       const disk = _selectedTower.shift()
@@ -57,7 +60,7 @@ function Board(props, ref) {
       selectDisk(undefined)
       selectTower(undefined)
       if (toTower !== selectedTower) {
-        props.setStep(step => step + 1)
+        dispatch(actions.increaseStep())
       }
     }
   }
@@ -88,5 +91,3 @@ function Board(props, ref) {
     </div>
   )
 }
-
-export default forwardRef(Board)
