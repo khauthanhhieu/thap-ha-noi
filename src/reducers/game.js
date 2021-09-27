@@ -66,15 +66,21 @@ export default function game(state = initState, action) {
       if (!state.selectedDisk || !state.selectedTower) {
         return state
       }
+      if (state.towers[action.payload]) {
+        const stack = state.towers[action.payload]
+        if (stack.length === 0 || stack[0] > state.selectedDisk) {
+          stack.unshift(state.selectedDisk)
 
-      state.towers[action.payload] && state.towers[action.payload].unshift(state.selectedDisk)
-
-      return {
-        ...state,
-        selectedTower: undefined,
-        selectedDisk: undefined,
-        step: state.step + 1
+          return {
+            ...state,
+            selectedTower: undefined,
+            selectedDisk: undefined,
+            step: state.step + 1
+          }
+        }
       }
+
+      return state
     }
     default:
       return state
