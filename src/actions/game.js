@@ -27,3 +27,7 @@ export function selectTower(tower) {
 export function moveDiskTo(to) {
   return { type: types.MOVE_DISK_TO, payload: to }
 }
+
+export function setModeExec() {
+  return { type: types.SET_MODE_EXEC }
+}

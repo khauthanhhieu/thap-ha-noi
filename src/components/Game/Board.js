@@ -1,7 +1,7 @@
-import Tower from "./Shape/Tower"
+import Tower from "./Tower"
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import actions from "../actions"
+import actions from "../../actions"
 
 const TOWERS = ['A', 'B', 'C']
 
